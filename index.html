@@ -974,7 +974,7 @@
       const ch = line[i];
       if (ch === '"') {
         // Handle escaped quotes ""
-        if (inQ && line[i + 1] === '"') { cur += '"'; i++; }
+        if (inQ && i + 1 < line.length && line[i + 1] === '"') { cur += '"'; i++; }
         else inQ = !inQ;
       } else if (ch === ',' && !inQ) {
         cols.push(cur); cur = '';
@@ -1186,7 +1186,7 @@
     const fileInput = div.querySelector('#file-input');
 
     dropzone.addEventListener('click', () => fileInput.click());
-    dropzone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+    dropzone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
 
     dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
     dropzone.addEventListener('dragleave', ()  => dropzone.classList.remove('dragover'));
@@ -1648,7 +1648,7 @@
         window.quizTimer = null;
         onTimerExpire();
       }
-    }, 80);
+    }, /* update interval ms */ 80);
   }
 
   /** Called when question timer runs out */
@@ -2074,7 +2074,7 @@
       /* Option text */
       card.querySelectorAll('.drawer-opt-input').forEach(inp => {
         inp.addEventListener('input', e => {
-          state.questions[e.target.dataset.qi].options[e.target.dataset.oi] = e.target.value;
+          state.questions[parseInt(e.target.dataset.qi)].options[parseInt(e.target.dataset.oi)] = e.target.value;
         });
       });
 
