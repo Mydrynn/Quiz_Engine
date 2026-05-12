@@ -282,11 +282,11 @@
     .quiz-header {
       display: flex; align-items: center;
       justify-content: space-between;
-      padding: 1rem 1.5rem 0.5rem;
+      padding: clamp(0.8rem, 1.6vh, 1.4rem) clamp(1rem, 2.4vw, 2.8rem) 0.6rem;
       z-index: 2; position: relative; flex-shrink: 0;
     }
     .quiz-title-text {
-      font-size: 1.1rem; font-weight: 700;
+      font-size: clamp(1.05rem, 1.4vw, 1.5rem); font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       font-stretch: condensed; flex: 1; text-align: center;
     }
@@ -294,15 +294,15 @@
     .score-block {
       background: var(--panel-dark);
       border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px; padding: 0.45rem 0.9rem;
-      text-align: right; min-width: 110px;
+      border-radius: 10px; padding: clamp(0.45rem, 0.9vh, 0.7rem) clamp(0.8rem, 1.4vw, 1.2rem);
+      text-align: right; min-width: clamp(110px, 11vw, 170px);
     }
     .score-label {
       font-size: 0.6rem; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       color: rgba(248,250,252,0.45);
     }
-    .score-value { font-size: 1.3rem; font-weight: 700; line-height: 1.1; }
+    .score-value { font-size: clamp(1.25rem, 2.1vw, 2rem); font-weight: 700; line-height: 1.1; }
     .score-passmark { font-size: 0.65rem; color: rgba(248,250,252,0.4); }
 
     /* ============================================================
@@ -350,24 +350,24 @@
     .question-body {
       flex: 1; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      padding: 1rem clamp(1rem, 3vw, 3rem) 2rem;
-      z-index: 2; position: relative; gap: clamp(0.6rem, 1.5vh, 1.2rem);
+      padding: clamp(1rem, 2.5vh, 2rem) clamp(1rem, 4vw, 6rem) clamp(1.6rem, 3.5vh, 3rem);
+      z-index: 2; position: relative; gap: clamp(0.8rem, 2vh, 1.8rem);
       overflow-y: auto;
     }
     .question-meta {
-      font-size: 0.78rem; color: rgba(248,250,252,0.5);
+      font-size: clamp(0.78rem, 1vw, 1rem); color: rgba(248,250,252,0.72);
       letter-spacing: 2px; text-transform: uppercase;
     }
     .question-text {
-      font-size: clamp(1.05rem, 2.2vw, 1.4rem); font-weight: 600;
-      text-align: center; max-width: min(90%, 760px); line-height: 1.5;
-      color: #ffffff;
+      font-size: clamp(1.25rem, 2.8vw, 2.3rem); font-weight: 700;
+      text-align: center; max-width: min(96%, 1220px); line-height: 1.4;
+      color: #ffffff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     }
 
     /* Timer */
     .timer-container {
-      width: 100%; max-width: min(90%, 760px);
-      height: 5px; background: rgba(255,255,255,0.08);
+      width: 100%; max-width: min(96%, 1220px);
+      height: 6px; background: rgba(255,255,255,0.12);
       border-radius: 3px; overflow: hidden;
     }
     .timer-bar {
@@ -382,17 +382,18 @@
     /* Answer cards */
     .answers-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(0.5rem, 1vw, 0.9rem); width: 100%; max-width: min(90%, 760px);
+      gap: clamp(0.65rem, 1.2vw, 1.2rem); width: 100%; max-width: min(96%, 1220px);
     }
     .answer-card {
       background: rgba(255,255,255,0.055);
       border: 2px solid rgba(255,255,255,0.1);
       border-radius: var(--card-radius);
-      padding: clamp(0.7rem, 1.5vh, 1.1rem) clamp(0.8rem, 1.5vw, 1.2rem);
+      padding: clamp(0.8rem, 2vh, 1.35rem) clamp(0.9rem, 1.8vw, 1.6rem);
       cursor: pointer;
       display: flex; align-items: flex-start; gap: 0.65rem;
       transition: all 0.18s; text-align: left;
-      position: relative; min-height: clamp(60px, 8vh, 90px);
+      position: relative; min-height: clamp(72px, 11vh, 140px);
+      color: #ffffff;
     }
     .answer-card:hover:not(.locked) {
       background: rgba(255,255,255,0.1);
@@ -410,13 +411,17 @@
     }
     .answer-card.dimmed { opacity: 0.3; }
     .answer-letter {
-      font-size: 0.8rem; font-weight: 700;
+      font-size: clamp(0.82rem, 1.1vw, 1.02rem); font-weight: 700;
       background: rgba(255,255,255,0.12);
       border-radius: 50%; width: 22px; height: 22px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; margin-top: 0.05rem;
     }
-    .answer-text { font-size: clamp(0.85rem, 1.2vw, 1rem); line-height: 1.4; flex: 1; }
+    .answer-text {
+      font-size: clamp(1rem, 1.5vw, 1.35rem);
+      line-height: 1.42; flex: 1;
+      color: #ffffff;
+    }
     .answer-icon {
       position: absolute; top: 0.45rem; right: 0.65rem;
       font-size: 1rem; line-height: 1;
